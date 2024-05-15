@@ -15,7 +15,7 @@ def menuString(deviceIP, username):
         print('\t\t  Only numbers are accepted')
         print('  -------------------------------------------------------------- ')
         print('  >\t\t1. To run the following commands:\t       <')
-        print(f'\t\t\t{addAutoRecov[0]} {addAutoRecov[1]}    ')      
+        print(f'\t{addAutoRecov[0]} {addAutoRecov[1]}    ')      
         print('  >\t\t\t2. Exit the program\t\t       <')
         print('  -------------------------------------------------------------- \n')
 

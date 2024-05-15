@@ -53,16 +53,12 @@ def addRecov(validIPs, username, netDevice):
                 authLog.info(f"Successfully configured auto recovery for device: {validDeviceIP}")
 
                 with open(f"{validDeviceIP}_Outputs.txt", "a") as file:
-                    print(f"INFO: Validating the configuration done...\n{shHostnameOut}{shAutoRecov}")
                     file.write(f"User {username} connected to device IP {validDeviceIP}\n\n")
-
-                    print(f"INFO: Taking a \"{shAutoRecov}\" for device: {validDeviceIP}")
+                    print(f"INFO: Validating the configuration done...\n{shHostnameOut}{shAutoRecov}")
                     shAutoRecovOut = sshAccess.send_command(shAutoRecov)
-                    print(f"INFO: {shAutoRecov} taken for device: {validDeviceIP}")
+                    print(f"{shAutoRecovOut}")
                     authLog.info(f"Automation successfully ran the command: {shAutoRecov}")
-                    
                     file.write(f"{shHostnameOut}{shAutoRecov}:\n{shAutoRecovOut}")
-
 
         except Exception as error:
             print(f"An error occurred: {error}\n", traceback.format_exc())
@@ -73,7 +69,7 @@ def addRecov(validIPs, username, netDevice):
         
         finally:
             with open(f"generalOutputs.txt", "a") as file:
-                    file.write(f"INFO: Taking a \"{shAutoRecov}\" for device: {validDeviceIP}")
+                    file.write(f"INFO: Taking a \"{shAutoRecov}\" for device: {validDeviceIP}\n")
                     file.write(f"{shHostnameOut}{shAutoRecov}:\n{shAutoRecovOut}\n")
-            print("Outputs and files successfully created.\n")
+            print("\nOutputs and files successfully created.")
             print("For any erros or logs please check authLog.txt\n")
