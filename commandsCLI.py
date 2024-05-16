@@ -13,7 +13,7 @@ shHostname = "show run | i hostname"
 
 addAutoRecov = [
         "errdisable recovery cause dhcp-rate-limit",
-        "errdisable recovery interval 600",
+        # "errdisable recovery interval 600",
         "do wr"
 ]
 
@@ -64,8 +64,8 @@ def addRecov(validIPs, username, netDevice):
             print(f"An error occurred: {error}\n", traceback.format_exc())
             authLog.error(f"User {username} connected to {validDeviceIP} got an error: {error}")
             authLog.debug(traceback.format_exc(),"\n")
-            with open(f"failedDevices.txt","a") as failedDevices:
-                failedDevices.write(f"User {username} connected to {validDeviceIP} got an error: {error} \n")
+            with open(f"failedDevices.csv","a") as failedDevices:
+                failedDevices.write(f"{validDeviceIP}")
         
         finally:
             with open(f"generalOutputs.txt", "a") as file:
