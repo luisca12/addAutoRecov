@@ -65,7 +65,7 @@ def addRecov(validIPs, username, netDevice):
             authLog.error(f"User {username} connected to {validDeviceIP} got an error: {error}")
             authLog.debug(traceback.format_exc(),"\n")
             with open(f"failedDevices.csv","a") as failedDevices:
-                failedDevices.write(f"{validDeviceIP}")
+                failedDevices.write(f"{validDeviceIP}\n")
         
         finally:
             with open(f"generalOutputs.txt", "a") as file:
